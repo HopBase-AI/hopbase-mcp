@@ -4,7 +4,7 @@
 
 - **Endpoint:** `https://api.hop-base.com/mcp`
 - **Transport:** Streamable HTTP, stateless, POST only (one JSON-RPC message per request; no SSE stream or batch requests)
-- **Authentication:** `Authorization: Bearer <key>` or `x-api-key: <key>`, with the same API key you use for model calls
+- **Authentication:** `Authorization: Bearer <key>` or `x-api-key: <key>`, with the same API key you use for model calls. Required to call a tool; listing the tools needs no key
 - **Scope:** read-only; every result covers only the key in use
 
 This is a hosted service and its source is not published. This repository holds the MCP registry manifest ([`server.json`](server.json)) and client configs.
@@ -58,7 +58,7 @@ Any client that supports remote Streamable HTTP servers with a custom header can
 
 - **The key decides what MCP sees.** `list_models` and `get_model_limits` see only the groups of the key you configure. To inspect another model family, add its group to the key, or register a second server entry with a key that includes it.
 - **Model calls do not go through MCP.** Keep inference on the regular API endpoints (`https://api.hop-base.com/v1`: OpenAI Chat Completions and Responses, Anthropic Messages, native Gemini, and the image and video task endpoints).
-- **A key is required.** Requests without one return 401.
+- **Calling a tool needs a key.** The handshake (`initialize`) and `tools/list` answer without credentials, so clients and directories can discover the tools; `tools/call` without a key returns 401.
 
 ## Links
 
