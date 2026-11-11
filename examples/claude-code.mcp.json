@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "hopbase": {
+      "type": "http",
+      "url": "https://api.hop-base.com/mcp",
+      "headers": { "Authorization": "Bearer ${HOPBASE_API_KEY}" }
+    }
+  }
+}

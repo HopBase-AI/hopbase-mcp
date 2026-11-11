@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.hop-base/mcp",
+  "title": "HopBase",
+  "description": "Read-only HopBase AI gateway tools: models, limits, docs search, balance and usage for your API key.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/HopBase-AI/hopbase-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://hop-base.com/en/docs/getting-started/ai-agent",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.hop-base.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <HopBase API key>",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
